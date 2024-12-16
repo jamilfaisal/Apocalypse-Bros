@@ -10,5 +10,7 @@ Thumbs.db
 [Tt]emp/
 [Tt]arget/
 [Bb]in/
+[Ll]ogs/
+obj/
 
 .idea/

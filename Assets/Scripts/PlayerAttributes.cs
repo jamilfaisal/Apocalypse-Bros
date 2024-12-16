@@ -1,5 +1,3 @@
-namespace DefaultNamespace;
-
 public class PlayerAttributes
 {
     private string name;
@@ -9,7 +7,7 @@ public class PlayerAttributes
     private int currentHealth;
     private int healthRegenerationRate;
     private int damage;
-    private int reloadRate;
+    private double reloadRate;
 
     public PlayerAttributes()
     {
