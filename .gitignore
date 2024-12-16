@@ -1,0 +1,14 @@
+#User-specific files
+UserSettings/
+
+#OS generated files
+.DS_Store
+Thumbs.db
+
+#Build directories
+[Ll]ibrary/
+[Tt]emp/
+[Tt]arget/
+[Bb]in/
+
+.idea/
