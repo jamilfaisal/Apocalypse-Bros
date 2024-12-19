@@ -9,6 +9,7 @@ namespace Mob
 
         protected override void Die()
         {
+            LevelManager.AddXp(10);
             Destroy(gameObject);
         }
     }
