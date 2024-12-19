@@ -4,28 +4,20 @@ namespace Managers
 {
     public class PlayerAttributesManager : MonoBehaviour
     {
-        public PlayerAttributes baseAttributes;
+        public PlayerAttributes loadedAttributes;
         private PlayerAttributes _currentAttributes;
-
-        public int playerLevel = 1;
 
         private void Start()
         {
-            _currentAttributes = Instantiate(baseAttributes);
+            _currentAttributes = Instantiate(loadedAttributes);
         }
 
         public void LevelUp()
         {
-            playerLevel++;
-            UpdateAttributes();
+            _currentAttributes.LevelUp();
+            Debug.Log($"Level: {_currentAttributes.playerLevel}");
         }
 
-        private void UpdateAttributes()
-        {
-            _currentAttributes.ScaleStats(playerLevel);
-            Debug.Log($"Level: {playerLevel}");
-        }
-        
         public PlayerAttributes GetPlayerAttributes()
         {
             return _currentAttributes;

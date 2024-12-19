@@ -8,15 +8,23 @@ namespace Player
     {
         public GameObject bulletPrefab;
         public Transform gunEnd;
-        public PlayerAttributesManager attributesManager;
+        private PlayerAttributesManager _attributesManager;
 
         private double _fireTimer;
-    
+
+        private void Start()
+        {
+            _attributesManager = GameManager.Instance.AttributesManager;
+            if (!_attributesManager || !bulletPrefab || !gunEnd || bulletPrefab.GetComponent<Bullet>() == null)
+            {
+                Debug.LogError("PlayerShoot is missing a reference!");
+                Application.Quit();
+            }
+        }
+
         private void Update()
         {
-            if (!attributesManager) return;
-            
-            var attributes = attributesManager.GetPlayerAttributes();
+            var attributes = _attributesManager.GetPlayerAttributes();
             _fireTimer += Time.deltaTime;
             if (_fireTimer >= attributes.reloadRate)
             {
@@ -27,7 +35,6 @@ namespace Player
 
         private void FireBullet(PlayerAttributes attributes)
         {
-            if (!bulletPrefab || !gunEnd) return;
         
             var bullet = Instantiate(bulletPrefab, gunEnd.position, gunEnd.rotation);
             SetBulletDamage(attributes, bullet);
@@ -36,10 +43,7 @@ namespace Player
         private static void SetBulletDamage(PlayerAttributes attributes, GameObject bullet)
         {
             var bulletScript = bullet.GetComponent<Bullet>();
-            if (bulletScript)
-            {
-                bulletScript.SetBulletDamage(attributes.damage);
-            }
+            bulletScript.SetBulletDamage(attributes.damage);
         }
     }
 }
