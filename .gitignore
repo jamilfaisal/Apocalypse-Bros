@@ -1,9 +1,10 @@
 #User-specific files
-UserSettings/
+[Uu]ser[Ss]ettings/
 
 #OS generated files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 #Build directories
 [Ll]ibrary/
@@ -11,8 +12,14 @@ Thumbs.db
 [Tt]arget/
 [Bb]in/
 [Ll]ogs/
-obj/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Mm]emoryCaptures/
+*.csproj
+*.sln
 
+# IDE-specific files
 .idea/
 
 Apocalypse-Bros.sln.DotSettings.user
