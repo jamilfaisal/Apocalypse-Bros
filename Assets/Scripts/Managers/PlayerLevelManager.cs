@@ -11,7 +11,7 @@ namespace Managers
 
         private void Start()
         {
-            _attributesManager = GameManager.Instance.AttributesManager;
+            _attributesManager = MetaManager.Instance.AttributesManager;
         }
 
         public void AddXp(int xp)

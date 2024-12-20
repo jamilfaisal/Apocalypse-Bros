@@ -11,7 +11,7 @@ namespace Mob
 
         protected override void Die()
         {
-            GameManager.Instance.LevelManager.AddXp(10);
+            MetaManager.Instance.LevelManager.AddXp(10);
             Destroy(gameObject);
         }
     }
