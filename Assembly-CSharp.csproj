@@ -52,7 +52,6 @@
     <Compile Include="Assets\Scripts\Bullets\Bullet.cs" />
     <Compile Include="Assets\Scripts\Mob\Mob1.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerShoot.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Mob\MobAbstract.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerAttributes.cs" />
     <Reference Include="UnityEngine">
