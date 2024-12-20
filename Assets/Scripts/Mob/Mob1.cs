@@ -1,3 +1,5 @@
+using Managers;
+
 namespace Mob
 {
     public class Mob1 : MobAbstract
@@ -9,6 +11,7 @@ namespace Mob
 
         protected override void Die()
         {
+            MetaManager.Instance.LevelManager.AddXp(10);
             Destroy(gameObject);
         }
     }

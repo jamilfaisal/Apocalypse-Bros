@@ -8,38 +8,49 @@ namespace Player
     {
         public GameObject bulletPrefab;
         public Transform gunEnd;
-        public PlayerAttributesManager attributesManager;
 
-        private double _fireTimer;
-    
+        private double _shootTimer;
+
+        private void Start()
+        {
+            if (!MetaManager.Instance.AttributesManager || !bulletPrefab || !gunEnd ||
+                bulletPrefab.GetComponent<Bullet>() == null)
+            {
+                Debug.LogError("PlayerShoot is missing a reference!");
+                Application.Quit();
+            }
+        }
+
         private void Update()
         {
-            if (!attributesManager) return;
-            
-            var attributes = attributesManager.GetPlayerAttributes();
-            _fireTimer += Time.deltaTime;
-            if (_fireTimer >= attributes.reloadRate)
+            var attributes = MetaManager.Instance.AttributesManager.GetPlayerAttributes();
+            if (ShootTimer(attributes.reloadRate))
             {
-                FireBullet(attributes);
-                _fireTimer = 0;
+                ShootBullet(attributes.damage);
             }
         }
 
-        private void FireBullet(PlayerAttributes attributes)
+        private bool ShootTimer(double reloadRate)
         {
-            if (!bulletPrefab || !gunEnd) return;
-        
-            var bullet = Instantiate(bulletPrefab, gunEnd.position, gunEnd.rotation);
-            SetBulletDamage(attributes, bullet);
+            if (_shootTimer >= reloadRate)
+            {
+                _shootTimer = 0;
+                return true;
+            }
+            _shootTimer += Time.deltaTime;
+            return false;
         }
 
-        private static void SetBulletDamage(PlayerAttributes attributes, GameObject bullet)
+        private void ShootBullet(int damage)
+        {
+            var bullet = Instantiate(bulletPrefab, gunEnd.position, gunEnd.rotation);
+            SetBulletDamage(damage, bullet);
+        }
+
+        private static void SetBulletDamage(int damage, GameObject bullet)
         {
             var bulletScript = bullet.GetComponent<Bullet>();
-            if (bulletScript)
-            {
-                bulletScript.SetBulletDamage(attributes.damage);
-            }
+            bulletScript.SetBulletDamage(damage);
         }
     }
 }
