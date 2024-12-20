@@ -15,7 +15,6 @@ namespace Bullets
     
         private void OnCollisionEnter(Collision other)
         {
-            Debug.Log("Bullet collided with: " + other.gameObject.name);
             if (!other.gameObject.CompareTag("Mob")) return;
             var mob = other.gameObject.GetComponent<MobAbstract>();
             mob.TakeDamage(_bulletDamage);
