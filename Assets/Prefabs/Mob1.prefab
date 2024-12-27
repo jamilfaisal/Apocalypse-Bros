@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8840655399226564905}
   - component: {fileID: -6550105821896158531}
   - component: {fileID: -8864002673788029510}
+  - component: {fileID: -3040850175262052869}
+  - component: {fileID: 1111437326708980036}
   m_Layer: 0
   m_Name: Mob1
   m_TagString: Mob
@@ -149,3 +151,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2552f89624ea90c4aae48f693f644f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &-3040850175262052869
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9147981482899290829}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 50
+  m_Acceleration: 50
+  avoidancePriority: 50
+  m_AngularSpeed: 400
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1111437326708980036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9147981482899290829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c817e7492791d3a49bf9c1194a513f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2954398079187819415, guid: 11a0892e501405c41b2ae17fad70a91d, type: 3}
