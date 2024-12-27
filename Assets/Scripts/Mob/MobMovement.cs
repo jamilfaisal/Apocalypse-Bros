@@ -8,12 +8,12 @@ namespace Mob
         [SerializeField] private Transform player;
         private NavMeshAgent _agent;
         
-        void Start()
+        private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
         }
         
-        void Update()
+        private void Update()
         {
             _agent.destination = player.position;
         }
