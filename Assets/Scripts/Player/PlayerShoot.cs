@@ -6,14 +6,14 @@ namespace Player
 {
     public class PlayerShoot : MonoBehaviour
     {
-        public GameObject bulletPrefab;
-        public Transform gunEnd;
+        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private Transform gun;
 
         private double _shootTimer;
 
         private void Start()
         {
-            if (!MetaManager.Instance.AttributesManager || !bulletPrefab || !gunEnd ||
+            if (!MetaManager.Instance.AttributesManager || !bulletPrefab || !gun ||
                 bulletPrefab.GetComponent<Bullet>() == null)
             {
                 Debug.LogError("PlayerShoot is missing a reference!");
@@ -43,7 +43,8 @@ namespace Player
 
         private void ShootBullet(int damage)
         {
-            var bullet = Instantiate(bulletPrefab, gunEnd.position, gunEnd.rotation);
+            var gunEnd = new Vector3(gun.position.x, gun.position.y, gun.position.z);
+            var bullet = Instantiate(bulletPrefab, gunEnd, gun.rotation);
             SetBulletDamage(damage, bullet);
         }
 
