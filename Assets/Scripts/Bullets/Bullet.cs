@@ -7,6 +7,12 @@ namespace Bullets
     {
         private int _bulletDamage;
         private const int BulletSpeed = 100;
+        private float _bulletLifespan = 10;
+
+        private void Start()
+        {
+            Destroy(gameObject, _bulletLifespan);
+        }
 
         private void Update()
         {
