@@ -13,7 +13,7 @@ namespace Player
 
         private void Start()
         {
-            if (!MetaManager.Instance.AttributesManager || !bulletPrefab || !gunEnd ||
+            if (!MetaManager.Instance.PlayerAttributesManager || !bulletPrefab || !gunEnd ||
                 bulletPrefab.GetComponent<Bullet>() == null)
             {
                 Debug.LogError("PlayerShoot is missing a reference!");
@@ -23,7 +23,7 @@ namespace Player
 
         private void Update()
         {
-            var attributes = MetaManager.Instance.AttributesManager.GetPlayerAttributes();
+            var attributes = MetaManager.Instance.PlayerAttributesManager.GetPlayerAttributes();
             if (ShootTimer(attributes.reloadRate))
             {
                 ShootBullet(attributes.damage);
