@@ -9,13 +9,12 @@ namespace Player
         private float _mouseSensitivity = 100f;
         [SerializeField] private Transform playerBody;
         [SerializeField] private Transform turret;
-        private CinemachineCamera _virtualCamera;
+        [SerializeField] private CinemachineCamera virtualCamera;
         private float _verticalRotation;
 
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            _virtualCamera = GetComponentInChildren<CinemachineCamera>();
         }
 
         private void Update()
@@ -32,7 +31,7 @@ namespace Player
         {
             _verticalRotation -= mouseY;
             _verticalRotation = Mathf.Clamp(_verticalRotation, -45f, 20f);
-            _virtualCamera.transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
+            virtualCamera.transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
             turret.transform.localRotation = Quaternion.Euler(_verticalRotation + 90, 0f, 0f);
         }
 
