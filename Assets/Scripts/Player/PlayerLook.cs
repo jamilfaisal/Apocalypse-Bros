@@ -6,25 +6,25 @@ namespace Player
 {
     public class PlayerLook : MonoBehaviour
     {
-        private float _mouseSensitivity = 100f;
+        private float _mouseSensitivity = 1f;
         [SerializeField] private Transform playerBody;
         [SerializeField] private Transform turret;
         [SerializeField] private CinemachineCamera virtualCamera;
         private float _verticalRotation;
+        private PlayerInputActions _playerInputActions;
 
         private void Start()
         {
+            _playerInputActions = GetComponent<PlayerInput>().GetPlayerInputActions();
             Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Update()
         {
-            var mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity * Time.deltaTime;
-            var mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity * Time.deltaTime;
-            
-            RotateHorizontally(mouseX);
+            var moveInput = _playerInputActions.Player.MoveCamera.ReadValue<Vector2>() * _mouseSensitivity;
 
-            RotateVertically(mouseY);
+            RotateHorizontally(moveInput.x);
+            RotateVertically(moveInput.y);
         }
 
         private void RotateVertically(float mouseY)
