@@ -16,6 +16,7 @@ namespace Player
         private void Start()
         {
             _playerInputActions = GetComponent<PlayerInput>().GetPlayerInputActions();
+            Debug.Log(_playerInputActions);
             Cursor.lockState = CursorLockMode.Locked;
         }
 

@@ -6,7 +6,7 @@ namespace Player
     {
         private PlayerInputActions _playerInputActions;
     
-        private void Start()
+        private void Awake()
         {
             _playerInputActions = new PlayerInputActions();
             _playerInputActions.Player.Enable();

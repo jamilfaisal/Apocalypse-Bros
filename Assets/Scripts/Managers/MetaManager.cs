@@ -5,7 +5,7 @@ namespace Managers
     public class MetaManager : MonoBehaviour
     {
         public static MetaManager Instance { get; private set; }
-        public PlayerAttributesManager AttributesManager { get; private set; }
+        public PlayerAttributesManager PlayerAttributesManager { get; private set; }
         public PlayerLevelManager LevelManager { get; private set; }
 
         private void Awake()
@@ -13,7 +13,7 @@ namespace Managers
             if (!Instance)
             {
                 Instance = this;
-                AttributesManager = GetComponent<PlayerAttributesManager>();
+                PlayerAttributesManager = GetComponent<PlayerAttributesManager>();
                 LevelManager = GetComponent<PlayerLevelManager>();
             }
             else

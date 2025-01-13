@@ -15,5 +15,8 @@ MonoBehaviour:
   playerName: PlayerTestName
   playerLevel: 1
   techPoints: 0
+  maxHealth: 100
+  currentHealth: 100
   damage: 1
   reloadRate: 1
+  healthRegenerationRate: 0
