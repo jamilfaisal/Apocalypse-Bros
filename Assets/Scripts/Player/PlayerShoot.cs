@@ -43,8 +43,7 @@ namespace Player
 
         private void ShootBullet(int damage)
         {
-            var gunEnd = new Vector3(gun.position.x, gun.position.y, gun.position.z);
-            var bullet = Instantiate(bulletPrefab, gunEnd, gun.rotation);
+            var bullet = Instantiate(bulletPrefab, gun.position, gun.rotation);
             SetBulletDamage(damage, bullet);
         }
 

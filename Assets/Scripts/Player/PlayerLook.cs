@@ -1,11 +1,12 @@
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player
 {
     public class PlayerLook : MonoBehaviour
     {
+        private const float MinLookDown = 40f;
+        private const float MaxLookUp = 115f;
         private float _mouseSensitivity = 1f;
         [SerializeField] private Transform playerBody;
         [SerializeField] private Transform turret;
@@ -16,7 +17,6 @@ namespace Player
         private void Start()
         {
             _playerInputActions = GetComponent<PlayerInput>().GetPlayerInputActions();
-            Debug.Log(_playerInputActions);
             Cursor.lockState = CursorLockMode.Locked;
         }
 
@@ -30,10 +30,10 @@ namespace Player
 
         private void RotateVertically(float mouseY)
         {
-            _verticalRotation -= mouseY;
-            _verticalRotation = Mathf.Clamp(_verticalRotation, -45f, 20f);
+            _verticalRotation -= mouseY * _mouseSensitivity;
+            _verticalRotation = Mathf.Clamp(_verticalRotation, MinLookDown, MaxLookUp);
             virtualCamera.transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
-            turret.transform.localRotation = Quaternion.Euler(_verticalRotation + 90, 0f, 0f);
+            turret.transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
         }
 
         private void RotateHorizontally(float mouseX)
