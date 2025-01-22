@@ -30,7 +30,6 @@ namespace Mob
             if (other.gameObject.CompareTag("Player") && CanHit())
             {
                 MetaManager.Instance.PlayerAttributesManager.PlayerTakeDamage(MobDamage);
-                Debug.Log("im hitting im ahhha hitting ahhh " + MobDamage);
                 _timeTillNextAttack = 0;
             }
         }
