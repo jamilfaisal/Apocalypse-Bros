@@ -30,7 +30,7 @@ namespace Player
 
         private void RotateVertically(float mouseY)
         {
-            _verticalRotation -= mouseY * _mouseSensitivity;
+            _verticalRotation -= mouseY;
             _verticalRotation = Mathf.Clamp(_verticalRotation, MinLookDown, MaxLookUp);
             virtualCamera.transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
             turret.transform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);
